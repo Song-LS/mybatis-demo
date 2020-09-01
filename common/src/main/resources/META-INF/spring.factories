@@ -1,0 +1,3 @@
+# Auto ure
+#org.springframework.boot.autoure.EnableAutouration=\
+#com.sls.base..cache.CacheRedisCaffeineAutouration

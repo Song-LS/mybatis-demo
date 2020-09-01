@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sls.base.dao.ShopDao">
+    <insert id="addShop" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO shop (shop_name, shop_no) value (#{shopName}, #{shopNo})
+    </insert>
+
+    <update id="delShop" parameterType="java.lang.Long">
+        update shop set deleted = 1 where id = #{shopId}
+    </update>
+
+    <select id="countShopSize" resultType="int">
+        select count (*) from shop where deleted = 0;
+    </select>
+
+    <select id="findShopList" parameterType="java.lang.Long" resultType="com.sls.base.entity.Shop">
+        select * from shop where deleted = 0 order by id limit #{start}, #{end};
+    </select>
+</mapper>
